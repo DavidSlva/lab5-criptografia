@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  c1:
+    build:
+      context: .
+      dockerfile: dockerfile-c1
+    networks:
+      - mi_red
+
+  c2:
+    build:
+      context: .
+      dockerfile: dockerfile-c2
+    networks:
+      - mi_red
+
+  c3:
+    build:
+      context: .
+      dockerfile: dockerfile-c3
+    networks:
+      - mi_red
+
+  s1:
+    build:
+      context: .
+      dockerfile: dockerfile-s1
+    ports:
+      - "2204:22"
+    networks:
+      - mi_red
+
+networks:
+  mi_red:
+    driver: bridge
